@@ -1,0 +1,10 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.0.0/schema.json",
+  "name": "ae9ea53506924b58a7746570248b2dab",
+  "displayName": "Магазины",
+  "description": "Сравнение магазинов",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visibility": "Visible"
+}

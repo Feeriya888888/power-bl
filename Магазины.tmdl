@@ -1,0 +1,27 @@
+table Магазины
+	lineageTag: 3ae7864d-8b27-4fc0-aaad-5e45ffe1e8ea
+
+	column ID_магазина
+		dataType: int64
+		lineageTag: 059fb312-4de1-4088-ba7e-7e3078524d98
+		summarizeBy: none
+		isKey: true
+	column Название
+		dataType: string
+		lineageTag: 0e1e52e7-8cdd-4a46-92f5-9e4fa4d45fe6
+		summarizeBy: none
+
+	partition Магазины = m
+		mode: import
+		source =
+				let
+				    Источник = #table(
+				        type table [ID_магазина = Int64.Type, Название = text],
+				        {
+				{1, "Центр"},
+				{2, "Север"},
+				{3, "Юг"}
+				        }
+				    )
+				in
+				    Источник

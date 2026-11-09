@@ -1,0 +1,41 @@
+table Товары
+	lineageTag: f0cffe38-3b84-4220-a9d3-febec6b759e7
+
+	column ID_товара
+		dataType: int64
+		lineageTag: eb773c2a-bfbe-458a-9709-a3db2aa5d553
+		summarizeBy: none
+		isKey: true
+	column Название
+		dataType: string
+		lineageTag: 87ff371a-9374-451b-9009-82bdc708707a
+		summarizeBy: none
+	column Категория
+		dataType: string
+		lineageTag: 16e35396-98cc-406a-b0f9-f88a34ca18e5
+		summarizeBy: none
+	column Цена базовая
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 8ad36870-1479-4ef8-89c1-1c37af43ffa8
+		summarizeBy: none
+
+	partition Товары = m
+		mode: import
+		source =
+				let
+				    Источник = #table(
+				        type table [ID_товара = Int64.Type, Название = text, Категория = text, Цена базовая = number],
+				        {
+				{1, "Кофе зерновой", "Напитки", 1250.0},
+				{2, "Чай зелёный", "Напитки", 450.0},
+				{3, "Кружка керамика", "Посуда", 390.0},
+				{4, "Термокружка", "Посуда", 1290.0},
+				{5, "Френч-пресс", "Оборудование", 1500.0},
+				{6, "Гейзерная кофеварка", "Оборудование", 8900.0},
+				{7, "Вафли", "Кондитерские изделия", 120.0},
+				{8, "Шоколад", "Кондитерские изделия", 210.0}
+				        }
+				    )
+				in
+				    Источник

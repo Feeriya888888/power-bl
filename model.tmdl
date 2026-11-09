@@ -1,0 +1,21 @@
+model Model
+	culture: ru-RU
+	defaultPowerBIDataSourceVersion: powerBI_V3
+
+relationship 9c12f32d-b5e6-49e7-889e-14ced659d73e
+	minCardinality: many
+	maxCardinality: one
+	fromColumn: Продажи.ID_товара
+	toColumn: Товары.ID_товара
+
+relationship 10de05be-5255-4239-bbea-0c4cc7148e84
+	minCardinality: many
+	maxCardinality: one
+	fromColumn: Продажи.ID_магазина
+	toColumn: Магазины.ID_магазина
+
+relationship 7bb19ccc-5fe5-4df0-976d-577ca6dd23d4
+	minCardinality: many
+	maxCardinality: one
+	fromColumn: Продажи.Дата
+	toColumn: Календарь.Дата

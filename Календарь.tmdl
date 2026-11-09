@@ -1,0 +1,37 @@
+table Календарь
+	dataCategory: Time
+	lineageTag: d7dfad08-7365-41da-895e-3aa2912a913c
+
+	column Дата
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 02c00cec-b7c4-4027-9e32-44b974e69cf6
+		summarizeBy: none
+		isKey: true
+	column Год
+		dataType: int64
+		lineageTag: ec960c5a-a213-4e4a-b79d-ef83c078d586
+		summarizeBy: none
+	column Номер месяца
+		dataType: int64
+		lineageTag: 0a0da47b-b6ca-4aa7-be2e-43fc0277b2e3
+		summarizeBy: none
+	column Месяц
+		dataType: string
+		lineageTag: 378e0d75-61ee-410d-8195-c84b5f8404a6
+		summarizeBy: none
+	column Год-Месяц
+		dataType: string
+		lineageTag: d231c334-df92-4214-9d97-20337bf4b838
+		summarizeBy: none
+
+	partition Календарь = calculated
+		mode: import
+		source =
+				ADDCOLUMNS(
+					CALENDAR(DATE(2025, 1, 1), DATE(2025, 12, 31)),
+					"Год", YEAR([Date]),
+					"Номер месяца", MONTH([Date]),
+					"Месяц", FORMAT([Date], "MMMM"),
+					"Год-Месяц", FORMAT([Date], "YYYY-MM")
+				)

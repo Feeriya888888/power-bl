@@ -1,0 +1,10 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.0.0/schema.json",
+  "name": "a6d3c067710f47c190d8a0cc3597f5ef",
+  "displayName": "Товары",
+  "description": "ТОП товаров по выручке",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visibility": "Visible"
+}
